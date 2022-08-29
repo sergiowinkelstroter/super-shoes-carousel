@@ -5,14 +5,9 @@ import "./Slide.css";
 import "swiper/css";
 import "swiper/css/virtual";
 
-export const Slide = () => {
-  const [data, setData] = useState([]);
+import shoes from "../../static/shoes.json";
 
-  useEffect(() => {
-    fetch("http://localhost:5173/src/static/shoes.json")
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
+export const Slide = () => {
   return (
     <Swiper
       modules={[Virtual]}
@@ -22,7 +17,7 @@ export const Slide = () => {
       onSwiper={(swiper) => console.log(swiper)}
       className="carousel"
     >
-      {data.map((item) => {
+      {shoes.map((item) => {
         return (
           <SwiperSlide key={item.id}>
             <div className="item">
